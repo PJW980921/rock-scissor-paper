@@ -8,9 +8,11 @@ const RSP_IMAGES = {
   paper: paperIcon,
 };
 
-function HandIcon({ className,value }) {
+
+
+function HandIcon({ value }) {
   const src = RSP_IMAGES[value];
-  return <img className={className} src={src} alt={value} />;
+  return <img className='Hand-icon' src={src} alt={value} />;
 }
 
 export default HandIcon;

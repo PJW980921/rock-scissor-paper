@@ -1,16 +1,17 @@
-import { useState } from 'react';
-import Button from './Button';
-import HandButton from './HandButton';
-import HandIcon from './HandIcon';
-import { compareHand, generateRandomHand } from './utils';
+import { useState } from "react";
+import Button from "./Button";
+import HandButton from "./HandButton";
+import HandIcon from "./HandIcon";
+import '../App.css'
+import { compareHand, generateRandomHand } from "./utils";
 
-const INITIAL_VALUE = 'rock';
+const INITIAL_VALUE = "rock";
 
 function getResult(me, other) {
   const comparison = compareHand(me, other);
-  if (comparison > 0) return '승리';
-  if (comparison < 0) return '패배';
-  return '무승부';
+  if (comparison > 0) return "승리";
+  if (comparison < 0) return "패배";
+  return "무승부";
 }
 
 function App() {
@@ -47,27 +48,57 @@ function App() {
   };
 
   return (
-    <div>
-      <Button onClick={handleClearClick}>처음부터</Button>
-      <div>
-        {score} : {otherScore}
-      </div>
-      <div>
-        <HandIcon value={hand} />
-        VS
-        <HandIcon value={otherHand} />
-      </div>
-      <p>승부 기록: {gameHistory.join(', ')}</p>
-      <div>
-        <input type="number" value={bet} min={1} max={9} onChange={handleBetChange}></input>
-      </div>
-      <p>승부 기록: {gameHistory.join(', ')}</p>
-      <div>
+      <body cz-shortcut-listen="true">
+        <div className="App">
+          <h1 className="App-heading">가위바위보</h1>
+          <Button onClick={handleClearClick}>
+          </Button>
+          <div className="App-scores">
+            <div className="Score">
+              <div className="Score-num">{score}</div>
+              <div className="Score-name">나</div>
+              </div>
+
+              <div className="App-versus">:</div>
+              <div className="Score">
+              <div className="Score-num">{otherScore}</div>
+              <div className="Score-name">상대</div>
+                </div>
+          </div>
+          <div className="Box App-box">
+            <div className="Box-inner">
+              <div className="App-hands">
+                <div className="Hand">
+               <HandIcon value={hand} />
+                </div>
+                <div className="App-versus"> VS</div>
+                <div className="Hand">
+                  <HandIcon value={otherHand} />
+                </div>
+              </div>
+              <div className="App-bet">
+                <span>배점</span>{" "}
+                <input
+                  type="number"
+                  value={bet}
+                  min={1}
+                  max={9}
+                  onChange={handleBetChange}
+                ></input><span>배</span>
+              </div>
+              <div className="App-history">
+                <h2>승부 기록: </h2>
+                <p>{gameHistory.join(", ")}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="App-btnBox">
         <HandButton value="rock" onClick={handleButtonClick} />
         <HandButton value="scissor" onClick={handleButtonClick} />
         <HandButton value="paper" onClick={handleButtonClick} />
-      </div>
-    </div>
+        </div>
+      </body>
   );
 }
 
