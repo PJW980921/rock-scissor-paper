@@ -44,11 +44,10 @@ body {
 
 .Hand-icon {
   opacity: 0.87;
-  width: 70px;
+  width: 10rem;
   height: 70px;
   margin: 70px 0 auto;
   -webkit-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -197,4 +196,9 @@ body {
   justify-content: center;
   align-items: center;
   padding-bottom: 20px;
+  
+  @media screen and(max-width:430px){
+    padding: 0 18rem;
+    gap:0.5rem;
+  }
 }
